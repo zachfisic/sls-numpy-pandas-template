@@ -1,0 +1,30 @@
+service: sls-numpy-pandas-template
+app: sls-templates
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+  profile: zfc_admin
+
+functions:
+  hello:
+    handler: handler.hello
+    layers:
+      - Ref: PythonRequirementsLambdaLayer
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    slim: true
+    zip: true
+    layer: true
+
+package:
+  exclude:
+    - node_modules/**
+    - venv/**
+
+plugins:
+  - serverless-python-requirements
