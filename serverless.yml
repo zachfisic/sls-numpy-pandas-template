@@ -20,6 +20,13 @@ custom:
     slim: true
     zip: true
     layer: true
+    noDeploy:
+      - pytest
+      - exceptiongroup
+      - iniconfig
+      - packaging
+      - pluggy
+      - tomli
 
 package:
   exclude:
